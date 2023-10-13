@@ -26,8 +26,11 @@ export class ProductService {
     return this.products.find((item) => item.id === Number(id));
   }
 
-  updateProduct(): string {
-    return 'UPDATE PRODUCT';
+  updateProduct(productDto: ProductDto, id: number): Product {
+    const index = this.products.findIndex((item) => item.id === Number(id));
+
+    this.products[index] = productDto;
+    return productDto;
   }
   deleteProduct(): string {
     return 'DELETE PRODUCT';
