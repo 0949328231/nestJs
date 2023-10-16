@@ -32,7 +32,14 @@ export class ProductService {
     this.products[index] = productDto;
     return productDto;
   }
-  deleteProduct(): string {
-    return 'DELETE PRODUCT';
+  deleteProduct(id: number): boolean {
+    // const dataTemplate = this.products.filter((item) => item.id !== Number(id));
+    // this.products = dataTemplate;
+    // return true;
+    const index = this.products.findIndex((item) => item.id === Number(id));
+    if (index !== -1) {
+      this.products.splice(index, 1);
+      return true;
+    } else return false;
   }
 }
